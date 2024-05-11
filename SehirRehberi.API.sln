@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.33328.57
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SehirRehberi.API", "SehirRehberi.API\SehirRehberi.API.csproj", "{6FF9950B-E19F-43D8-8CA1-6D847797CE64}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6FF9950B-E19F-43D8-8CA1-6D847797CE64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FF9950B-E19F-43D8-8CA1-6D847797CE64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FF9950B-E19F-43D8-8CA1-6D847797CE64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FF9950B-E19F-43D8-8CA1-6D847797CE64}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5A5C111E-8C9E-41F5-835C-92301430D656}
+	EndGlobalSection
+EndGlobal
