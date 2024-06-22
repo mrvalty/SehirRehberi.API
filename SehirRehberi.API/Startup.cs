@@ -28,13 +28,13 @@ namespace SehirRehberi.API
         {
             Configuration = configuration;
         }
-        
+        readonly string ApiCorsPolicy = "_apiCorsPolicy";
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //appsettings.json içindeki key bilgisi almak için configi.
+            //appsettings.json içindeki key bilgisi almak için config.
             var key = Encoding.ASCII.GetBytes(Configuration.GetSection("AppSettings:Token").Value);
 
             //Photolarý yüklemek için cloud sisteminin configlenmesi.
@@ -42,15 +42,16 @@ namespace SehirRehberi.API
 
             services.AddDbContext<DataContext>(x => x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllers();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "SehirRehberi.API", Version = "v1" });
-            });
+            //services.AddSwaggerGen(c =>
+            //{
+            //    c.SwaggerDoc("v1", new OpenApiInfo { Title = "SehirRehberi.API", Version = "v1" });
+            //});
             services.AddCors(options =>
             {
-                options.AddPolicy("AllowSpecificOrigin", builder =>
+                options.AddPolicy(ApiCorsPolicy, builder =>
                 {
-                    builder.WithOrigins("https://localhost:44328")  // Ýzin verilen kaynak (örneðin: https://example.com)
+                    /*builder.WithOrigins("https://localhost:44328")*/  // Ýzin verilen kaynak (örneðin: https://example.com)
+                    builder.WithOrigins("https://localhost:44328")
                     .AllowAnyOrigin()
                     .AllowAnyMethod()  // Tüm HTTP metodlarýný kabul et
                     .AllowAnyHeader(); // Tüm HTTP baþlýklarýný kabul et
@@ -79,18 +80,17 @@ namespace SehirRehberi.API
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "SehirRehberi.API v1"));
-            }
-            app.UseCors("AllowSpecificOrigin");
-
+            //if (env.IsDevelopment())
+            //{
+            //    app.UseDeveloperExceptionPage();
+            //    app.UseSwagger();
+            //    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "SehirRehberi.API v1"));
+            //}
             app.UseHttpsRedirection();
 
+            
             app.UseRouting();
-
+            app.UseCors(ApiCorsPolicy);
             app.UseAuthorization();
             app.UseAuthentication();
             app.UseEndpoints(endpoints =>

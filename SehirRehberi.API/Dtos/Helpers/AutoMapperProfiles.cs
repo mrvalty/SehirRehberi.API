@@ -17,6 +17,8 @@ namespace SehirRehberi.API.Dtos.Helpers
             });
 
             CreateMap<City, CityForDetailDto>();
+            CreateMap<Photo, PhotoForCreationDto>();
+            CreateMap<PhotoForReturnDto, Photo>();
         }
     }
 }

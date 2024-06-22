@@ -78,7 +78,7 @@ namespace SehirRehberi.API.Controllers
         public ActionResult GetPhotosByCity(int cityId)
         {
            var photos =_appRepository.GetPhotosByCity(cityId);
-            return Ok(photos);
+            return Ok(photos);   
         }
 
     }
